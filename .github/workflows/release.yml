@@ -1,0 +1,37 @@
+name: Build release package
+
+on:
+  push:
+    tags:
+      - '**'
+
+jobs:
+  build-release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Create release ZIP package
+        run: zip -r eso-database-steam-deck.zip assets/ install/ config/ scripts/
+
+      - name: Get release changelog
+        run: |
+          full_changelog=$(cat CHANGELOG.md)
+          changelog=$(php -r "preg_match_all('/# ${{ github.ref_name }}\n([\-\d\w\W]+)/m', '${full_changelog}', \$matches); echo trim(\$matches[1][0]);")
+          echo "${changelog}" > changelog.txt
+
+      - name: Read changelog from file
+        id: changelog
+        uses: juliangruber/read-file-action@v1
+        with:
+          path: ./changelog.txt
+          trim: true
+
+      - name: Create release
+        uses: svenstaro/upload-release-action@v2
+        with:
+          file: ./eso-database-steam-deck.zip
+          tag: ${{ github.ref_name }}
+          release_name: ${{ github.ref_name }}
+          overwrite: true
+          body: "${{ steps.changelog.outputs.content }}"
