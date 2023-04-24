@@ -1,0 +1,13 @@
+[Unit]
+Description=test
+After=network.target
+
+[Service]
+ExecStart=/home/deck/Applications/ESO-Database/scripts/service/eso-database-uploader.sh
+RestartSec=10
+Restart=on-failure
+KillSignal=SIGKILL
+RestartKillSignal=SIGKILL
+
+[Install]
+WantedBy=default.target

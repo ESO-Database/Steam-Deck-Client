@@ -1,0 +1,18 @@
+[Desktop Entry]
+Comment[en_US]=
+Comment=
+Exec=sh -c 'curl -L -H "Cache-Control: no-cache, no-store" https://raw.githubusercontent.com/ESO-Database/Steam-Deck-Client/master/install.sh | bash'
+GenericName[en_US]=
+GenericName=test
+MimeType=
+Name[en]=Install ESO-Database Steam Deck Client
+Name=Install ESO-Database Steam Deck Client
+Path=
+StartupNotify=false
+Terminal=true
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=

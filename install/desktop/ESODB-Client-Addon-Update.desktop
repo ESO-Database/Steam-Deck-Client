@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=ESO-Database Update AddOns
+Exec=/home/deck/Applications/ESO-Database/scripts/update-addons.sh -d
+Icon=/home/deck/Applications/ESO-Database/assets/images/logo.png
+Terminal=true
+Type=Application
+Categories=Utility
+StartupNotify=false
