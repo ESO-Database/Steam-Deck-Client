@@ -2,7 +2,7 @@
 [![Build release package](https://github.com/ESO-Database/Steam-Deck-Client/actions/workflows/release.yml/badge.svg?branch=master)](https://github.com/ESO-Database/Steam-Deck-Client/actions/workflows/release.yml)
 <img src="https://static.eso-database.com/github/steam-deck/steam-deck-eso.png?1">
 
-This repository contains all files to setup and enable automatic ESO-Database AddOn uploads on your Steam Deck.
+With the ESO-Database Steam Deck Client you update the needed The Elder Scrolls Online AddOns and automatically upload the AddOn data after your game sessions with a background service.
 
 You have to setup a superuser password in order to enable automatic uploads. For more information, see the <a href="#requirements">requirements</a> section.
 
