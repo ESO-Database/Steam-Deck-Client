@@ -1,5 +1,5 @@
 # ESO-Database Steam Deck Client
-[![Build release package](https://github.com/ESO-Database/Steam-Deck-Client/actions/workflows/release.yml/badge.svg?branch=master)](https://github.com/ESO-Database/Steam-Deck-Client/actions/workflows/release.yml)
+[![Build release package](https://github.com/ESO-Database/Steam-Deck-Client/actions/workflows/release.yml/badge.svg?branch=master)](https://github.com/ESO-Database/Steam-Deck-Client/actions/workflows/release.yml) ![GitHub issues](https://img.shields.io/github/issues/ESO-Database/Steam-Deck-Client?logo=github) ![Discord](https://img.shields.io/discord/683990734831091723?logo=discord)
 <img src="https://static.eso-database.com/github/steam-deck/steam-deck-eso.png?1">
 
 With the ESO-Database Steam Deck Client you update the needed The Elder Scrolls Online AddOns and automatically upload the AddOn data after your game sessions with a background service.
