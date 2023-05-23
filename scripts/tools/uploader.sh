@@ -2,6 +2,9 @@
 
 upload_sv_file () {
 
+	# Wait a few seconds until the ESO logout screen is over
+	sleep 10
+
 	ENDPOINT="$1"
 	SV_FILE_PATH="$2"
 	SV_FILE_NAME="$3"
