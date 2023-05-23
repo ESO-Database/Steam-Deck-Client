@@ -32,13 +32,15 @@ if [ "${auth_req_status}" = "true" ]; then
 		fi
 
 		echo "Please authenticate on the opened website with your ESO-Database account. After authentication, please return to this window..."
-		echo "Open this link if no browser window opens automatically:\n"
+		echo "Open this link if no browser window opens automatically:"
 		echo "${ESODB_AUTH_USER_URL}/${auth_req_token}"
 		setsid xdg-open "${ESODB_AUTH_USER_URL}/${auth_req_token}" >/dev/null 2>&1
 
     	AUTH_RESULT="wait"
+    	AUTH_LOOP_TIMEOUT="false"
+    	AUTH_LOOP_START_DATE=$(date +%s)
 
-    	until [ ${AUTH_RESULT} = "received" ]
+    	until [[ ${AUTH_RESULT} = "received" ]] || [[ ${AUTH_LOOP_TIMEOUT} = "true" ]]
       do
 
       	auth_status_req=$(curl --silent "${ESODB_AUTH_API_GET_AUTH_REQUEST_STATUS}" \
@@ -81,6 +83,14 @@ if [ "${auth_req_status}" = "true" ]; then
 					print_success "You are now logged in as ${user_name}!"
 					break
 				fi
+
+					now=$(date +%s)
+        	auth_loop_runtime_seconds=$((now-AUTH_LOOP_START_DATE))
+
+        	# Check if task should run in this loop
+        	if [ ${auth_loop_runtime_seconds} -gt ${ESODB_LOGIN_LOOP_TIMEOUT_SECONDS} ]; then
+        		AUTH_LOOP_TIMEOUT="true"
+        	fi
       done
 	else
 

@@ -102,6 +102,13 @@ export ESODB_AUTH_API_GET_AUTH_STATUS="https://auth.eso-database.com/api/get_aut
 # The endpoint for redirecting the user to the authorization page in their preferred browser language
 export ESODB_AUTH_USER_URL="https://auth.eso-database.com/redirect-auth"
 
+##
+# Misc options
+##
+
+# The number of seconds until the login loop is marked as failed
+export ESODB_LOGIN_LOOP_TIMEOUT_SECONDS=300
+
 
 # Source user config file if available
 if [ -f "/home/deck/Applications/ESO-Database/config/user.config.sh" ]; then
