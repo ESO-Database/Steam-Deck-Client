@@ -62,6 +62,8 @@ export ESODB_UPLOADER_GAME_DATA_URL="https://data.eso-database.com/v3/upload/gam
 export ESODB_UPLOADER_ENABLE_LEADERBOARD_DATA=1
 # The leaderboard data upload URL of the ESO-Database server for the Steam Deck
 export ESODB_UPLOADER_LEADERBOARD_DATA_URL="https://data.eso-database.com/v3/upload/leaderboard-data-exporter/"
+# The number of seconds before the upload of the changed SavedVariables file is triggered to not overload the CPU in combination with the ESO loading screen
+export ESODB_UPLOADER_WAIT_TIME=5
 
 ##
 # Paths
