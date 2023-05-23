@@ -41,7 +41,7 @@ if [ "${auth_req_status}" = "true" ]; then
     	until [ ${AUTH_RESULT} = "received" ]
       do
 
-      	auth_status_req=$(curl --silent "${ESODB_AUTH_API_GET_AUTH_STATUS}" \
+      	auth_status_req=$(curl --silent "${ESODB_AUTH_API_GET_AUTH_REQUEST_STATUS}" \
           --header "X-Request-Token: ${auth_req_token}" \
           --header 'Content-Type: application/x-www-form-urlencoded' \
           --data-urlencode 'source=steamdeck')

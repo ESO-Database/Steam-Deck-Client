@@ -2,12 +2,12 @@
 
 source /home/deck/Applications/ESO-Database/config/config.sh
 
-auth_req_token=$(/home/deck/Applications/ESO-Database/scripts/tools/get-auth-request-token.sh)
+auth_token=$(/home/deck/Applications/ESO-Database/scripts/tools/get-auth-token.sh)
 
 IFS=$'\n' read -d "" body status_code  < <(
 	curl \
 	--silent \
-	--header "X-Request-Token: ${auth_req_token}" \
+	--header "X-Auth-Token: ${auth_token}" \
 	--header "Content-Type: application/x-www-form-urlencoded" \
 	--header "User-Agent: ${ESODB_API_USER_AGENT}" \
 	--data-urlencode "source=${ESODB_AUTH_SOURCE}" \

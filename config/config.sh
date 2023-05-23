@@ -95,6 +95,8 @@ export ESODB_AUTH_SOURCE="steam-deck"
 export ESODB_API_GET_ADDON_VERSIONS="https://api.eso-database.com/v2/api/get-addon-versions"
 # The endpoint to fetch authorization request token for the login process
 export ESODB_AUTH_API_URL="https://auth.eso-database.com/api/new_request.php"
+# The endpoint to fetch the authentication request status of the user
+export ESODB_AUTH_API_GET_AUTH_REQUEST_STATUS="https://auth.eso-database.com/api/get_auth_request_status.php"
 # The endpoint to fetch the authentication status of the user
 export ESODB_AUTH_API_GET_AUTH_STATUS="https://auth.eso-database.com/api/get_auth_status.php"
 # The endpoint for redirecting the user to the authorization page in their preferred browser language
