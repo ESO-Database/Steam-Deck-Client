@@ -30,14 +30,22 @@ if [ "${fetch_addons_result}" = "ok" ]; then
 
   		folder_name=$(_jq '.folder_name')
   		download_file_url=$(_jq '.file')
-  		version_string=$(_jq '.version.string')
+			version_string=$(_jq '.version.string')
 
-  		addon_path="${ESODB_ESO_PROTON_ADDONS_LIVE_PATH}/${folder_name}"
+			addon_path="${ESODB_ESO_PROTON_ADDONS_LIVE_PATH}/${folder_name}"
 
 			# Remove folder to delete non existing files/folders
 			if [ "${folder_name}" != "" ] && [ -d "${addon_path}" ]; then
 				rm -fr "${addon_path}"
-  		fi
+			fi
+
+			# Skip download and delete folder
+			if [ "${folder_name}" = "ESODatabaseGameDataExport" ] && [ ! ${ESODB_ADDON_GAME_DATA_EXPORT_ENABLED} -eq 1 ]; then
+				continue
+			fi
+			if [ "${folder_name}" = "ESODatabaseLeaderboardExport" ] && [ ! ${ESODB_ADDON_LEADERBOARDS_EXPORT_ENABLED} -eq 1 ]; then
+				continue
+			fi
 
   		# Create download temp dir
   		mkdir -p "${ESODB_DOWNLOAD_TEMP_DIR}"

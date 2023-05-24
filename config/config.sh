@@ -64,6 +64,12 @@ export ESODB_UPLOADER_ENABLE_LEADERBOARD_DATA=1
 export ESODB_UPLOADER_LEADERBOARD_DATA_URL="https://data.eso-database.com/v3/upload/leaderboard-data-exporter/"
 # The number of seconds before the upload of the changed SavedVariables file is triggered to not overload the CPU in combination with the ESO loading screen
 export ESODB_UPLOADER_WAIT_TIME=5
+# Enables (1) or disabled (0) the download, update and upload of the Game Data Export AddOn.
+# After changing this setting, you should run the /home/deck/Applications/ESO-Database/scripts/update-addons.sh script.
+export ESODB_ADDON_GAME_DATA_EXPORT_ENABLED=1
+# Enables (1) or disabled (0) the download, update and upload of the Leaderboards Export AddOn.
+# After changing this setting, you should run the /home/deck/Applications/ESO-Database/scripts/update-addons.sh script.
+export ESODB_ADDON_LEADERBOARDS_EXPORT_ENABLED=1
 
 ##
 # Paths
