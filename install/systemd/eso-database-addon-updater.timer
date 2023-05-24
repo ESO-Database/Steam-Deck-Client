@@ -1,0 +1,10 @@
+[Unit]
+Description=The ESO-Database AddOn updater.
+After=network.target
+
+[Timer]
+OnCalendar=*:0/30
+Unit=eso-database-addon-updater.service
+
+[Install]
+WantedBy=timers.target

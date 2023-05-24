@@ -39,27 +39,27 @@ trap report_error ERR
 
 
 print_status "Creating required directories..."
-mkdir -p ~/Applications/ESO-Database
-mkdir -p ~/.eso-database-client
-mkdir -p ~/.eso-database-client/meta
+mkdir -p /home/deck/Applications/ESO-Database
+mkdir -p /home/deck/.eso-database-client
+mkdir -p /home/deck/.eso-database-client/meta
 
 
 print_status "Downloading ESO-Database Steam Deck Client files..."
 echo "${ESODB_URL}"
-curl --progress-bar --location "${ESODB_URL}" -o ~/Applications/ESO-Database/core.zip
+curl --progress-bar --location "${ESODB_URL}" -o /home/deck/Applications/ESO-Database/core.zip
 
 print_status "Extracting files..."
-cd ~/Applications/ESO-Database
-unzip -qq -o ~/Applications/ESO-Database/core.zip
-rm -f ~/Applications/ESO-Database/core.zip
+cd /home/deck/Applications/ESO-Database
+unzip -qq -o /home/deck/Applications/ESO-Database/core.zip
+rm -f /home/deck/Applications/ESO-Database/core.zip
 
 print_status "Set script permissions..."
-chmod +x ~/Applications/ESO-Database/scripts/*.sh
+chmod +x /home/deck/Applications/ESO-Database/scripts/*.sh
 print_success "Done"
 
 
 print_status "Fetching Elder Scrolls Online AddOns meta data..."
-fetch_addons_result=$(~/Applications/ESO-Database/scripts/api/get-addons.sh)
+fetch_addons_result=$(/home/deck/Applications/ESO-Database/scripts/api/get-addons.sh)
 if [ "${fetch_addons_result}" = "ok" ]; then
 	print_success "OK"
 else
@@ -68,18 +68,18 @@ fi
 
 
 print_status "Installing Elder Scrolls Online AddOns..."
-~/Applications/ESO-Database/scripts/update-addons.sh
+/home/deck/Applications/ESO-Database/scripts/update-addons.sh
 print_success "Done"
 
 
 print_status "ESO-Database Account login"
-login_status=$(~/Applications/ESO-Database/scripts/api/get-auth-status.sh)
+login_status=$(/home/deck/Applications/ESO-Database/scripts/api/get-auth-status.sh)
 if [ "${login_status}" = "false" ]; then
 	print_info "Please login in with your ESO-Database account..."
 	sleep 2
-	~/Applications/ESO-Database/scripts/login.sh
+	/home/deck/Applications/ESO-Database/scripts/login.sh
 else
-	user_name=$(~/Applications/ESO-Database/scripts/tools/get-user-name.sh)
+	user_name=$(/home/deck/Applications/ESO-Database/scripts/tools/get-user-name.sh)
 	print_info "Already signed in as \033[1;34m${user_name}\033[0m Skipping login step."
 fi
 
@@ -87,21 +87,24 @@ print_status "Superuser installation steps"
 print_info_warning "Superuser privileges are required for the following installation steps.\nIf you do not have a superuser password set up on your Steam deck, please read the instructions:\n\nhttps://www.eso-database.com/steam-deck-setup"
 
 
-print_status "Install background service"
-sudo cp -f ~/Applications/ESO-Database/install/systemd/eso-database-uploader.service /etc/systemd/system/eso-database-uploader.service
+print_status "Install background services"
+sudo cp -f /home/deck/Applications/ESO-Database/install/systemd/eso-database-uploader.service /etc/systemd/system/eso-database-uploader.service
+sudo cp -f /home/deck/Applications/ESO-Database/install/systemd/eso-database-addon-updater.service /etc/systemd/system/eso-database-addon-updater.service
+sudo cp -f /home/deck/Applications/ESO-Database/install/systemd/eso-database-addon-updater.timer /etc/systemd/system/eso-database-addon-updater.timer
 
 
-print_status "Enable and start background service"
-~/Applications/ESO-Database/scripts/enable-autoupload.sh
+print_status "Enable and start background services"
+/home/deck/Applications/ESO-Database/scripts/enable-autoupload.sh
+/home/deck/Applications/ESO-Database/scripts/enable-addon-autoupdate.sh
 
 
 print_status "Creating Launcher entries"
-cp -f ~/Applications/ESO-Database/install/desktop/* "${ESODB_DESKTOP_APPLICATION_PATH}"
+cp -f /home/deck/Applications/ESO-Database/install/desktop/* "${ESODB_DESKTOP_APPLICATION_PATH}"
 print_success "Done"
 
 
 print_status "Remove remaining setup files..."
-rm -fr ~/Applications/ESO-Database/install
+rm -fr /home/deck/Applications/ESO-Database/install
 print_success "Done"
 
 

@@ -14,7 +14,7 @@ while getopts 'd' flag; do
 done
 
 
-fetch_addons_result=$(~/Applications/ESO-Database/scripts/api/get-addons.sh)
+fetch_addons_result=$(/home/deck/Applications/ESO-Database/scripts/api/get-addons.sh)
 if [ "${fetch_addons_result}" = "ok" ]; then
 
 	if [ -f "${ESODB_META_ADDON_FILE}" ]; then
