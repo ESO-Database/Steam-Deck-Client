@@ -12,7 +12,7 @@ jobs:
       - uses: actions/checkout@v3
 
       - name: Create release ZIP package
-        run: zip -r eso-database-steam-deck.zip assets/ install/ config/ scripts/
+        run: zip -r eso-database-steam-deck.zip assets/ config/ install/ scripts/ version.txt
 
       - name: Get release changelog
         run: |
