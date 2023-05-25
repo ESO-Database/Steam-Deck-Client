@@ -3,8 +3,6 @@ Description=The ESO-Database AddOn updater.
 After=network.target
 
 [Service]
-User=deck
-Group=deck
 ExecStart=/home/deck/Applications/ESO-Database/scripts/update-addons.sh
 
 [Install]

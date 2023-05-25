@@ -8,8 +8,6 @@ RestartSec=10
 Restart=on-failure
 KillSignal=SIGKILL
 RestartKillSignal=SIGKILL
-User=deck
-Group=deck
 
 [Install]
 WantedBy=default.target
