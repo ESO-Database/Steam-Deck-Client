@@ -28,23 +28,49 @@ if [ "${fetch_addons_result}" = "ok" ]; then
   		 echo ${row} | base64 --decode | jq -r ${1}
   		}
 
+  		addon_name=$(_jq '.addon_name.en')
   		folder_name=$(_jq '.folder_name')
   		download_file_url=$(_jq '.file')
 			version_string=$(_jq '.version.string')
+			version_integer=$(_jq '.version.integer')
 
 			addon_path="${ESODB_ESO_PROTON_ADDONS_LIVE_PATH}/${folder_name}"
+			addon_meta_file_path="${addon_path}/${folder_name}.txt"
+			addon_version_string=$(get_addon_string_version "${addon_meta_file_path}")
+			addon_version_integer=$(get_addon_integer_version "${addon_meta_file_path}")
+
+			# Skip download and delete folder
+			if [ "${folder_name}" = "ESODatabaseGameDataExport" ] && [ ! ${ESODB_ADDON_GAME_DATA_EXPORT_ENABLED} -eq 1 ]; then
+
+				# Remove folder to delete non existing files/folders
+				if [ "${folder_name}" != "" ] && [ -d "${addon_path}" ]; then
+					rm -fr "${addon_path}"
+				fi
+
+				continue
+			fi
+			if [ "${folder_name}" = "ESODatabaseLeaderboardExport" ] && [ ! ${ESODB_ADDON_LEADERBOARDS_EXPORT_ENABLED} -eq 1 ]; then
+
+				# Remove folder to delete non existing files/folders
+				if [ "${folder_name}" != "" ] && [ -d "${addon_path}" ]; then
+					rm -fr "${addon_path}"
+				fi
+
+				continue
+			fi
+
+			if [ ${addon_version_integer} -eq 0 ]; then
+				echo "Installing AddOn ${addon_name} version ${version_string}..."
+			elif [ ! ${addon_version_integer} -eq ${version_integer} ]; then
+				echo "Updating AddOn ${addon_name} from ${addon_version_string} to version ${version_string}..."
+			else
+				echo "AddOn ${addon_name} is up to date! (Version ${addon_version_string})"
+				continue
+			fi
 
 			# Remove folder to delete non existing files/folders
 			if [ "${folder_name}" != "" ] && [ -d "${addon_path}" ]; then
 				rm -fr "${addon_path}"
-			fi
-
-			# Skip download and delete folder
-			if [ "${folder_name}" = "ESODatabaseGameDataExport" ] && [ ! ${ESODB_ADDON_GAME_DATA_EXPORT_ENABLED} -eq 1 ]; then
-				continue
-			fi
-			if [ "${folder_name}" = "ESODatabaseLeaderboardExport" ] && [ ! ${ESODB_ADDON_LEADERBOARDS_EXPORT_ENABLED} -eq 1 ]; then
-				continue
 			fi
 
   		# Create download temp dir

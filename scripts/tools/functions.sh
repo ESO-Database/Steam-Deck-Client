@@ -44,3 +44,25 @@ get_file_change_time () {
 
   echo ${change_time}
 }
+
+get_addon_string_version () {
+
+	version=0
+	if [ -f "$1" ]; then
+		version=$(cat "$1" | grep "## Version:")
+    version="${version/\#\#\ Version:\ /""}"
+	fi
+
+	echo "${version}"
+}
+
+get_addon_integer_version () {
+
+	version=0
+	if [ -f "$1" ]; then
+		version=$(cat "$1" | grep "## IntVersion:")
+    version="${version/\#\#\ IntVersion:\ /""}"
+	fi
+
+	echo "${version}"
+}
