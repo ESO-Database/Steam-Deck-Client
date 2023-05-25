@@ -108,11 +108,15 @@ rm -fr /home/deck/Applications/ESO-Database/install
 print_success "Done"
 
 
-echo "The installation is complete!"
+# Remove the install Desktop icon
+if [ -f /home/deck/Desktop/ESO-Database-Steam-Deck.desktop ]; then
+	rm -f /home/deck/Desktop/ESO-Database-Steam-Deck.desktop
+fi
+
+
+echo "\n\nThe installation is complete!"
 echo "This window will be closed in 20 seconds..."
 
 
 setsid xdg-open "https://www.eso-database.com/steam-deck-installation-complete/" >/dev/null 2>&1
 sleep 20
-
-# TODO: Try to remove installation desktop shortcut
