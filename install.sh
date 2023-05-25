@@ -2,12 +2,9 @@
 
 set -eo pipefail
 
-#ESODB_GITHUB_URL="https://api.github.com/repos/ESO-Database/Steam-Deck-Client/releases/latest"
-#ESODB_URL="$(curl --location --silent ${ESODB_GITHUB_URL} | grep -E 'browser_download_url.*zip' | cut -d '"' -f 4)"
+ESODB_GITHUB_URL="https://api.github.com/repos/ESO-Database/Steam-Deck-Client/releases/latest"
+ESODB_URL="$(curl --location --silent ${ESODB_GITHUB_URL} | grep -E 'browser_download_url.*zip' | cut -d '"' -f 4)"
 ESODB_DESKTOP_APPLICATION_PATH="/home/deck/.local/share/applications"
-
-# TODO: Workaround because we currently have no release available for development
-ESODB_URL="https://download.eso-database.com/steam-deck/eso-database-steam-deck.zip"
 
 
 report_error() {
