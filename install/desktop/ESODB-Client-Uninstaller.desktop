@@ -1,0 +1,9 @@
+#!/usr/bin/env xdg-open
+[Desktop Entry]
+Name=Uninstall ESO-Database
+Exec=/home/deck/Applications/ESO-Database/scripts/uninstall.sh
+Icon=/home/deck/Applications/ESO-Database/assets/images/logo.png
+Terminal=true
+Type=Application
+Categories=Utility
+StartupNotify=false

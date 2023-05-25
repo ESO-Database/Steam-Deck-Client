@@ -14,6 +14,9 @@ print_success () {
 	printf "\n"
 	printf "\033[1;32m$1\033[0m\n"
 }
+print_info_warning () {
+	printf "\033[0;33m$1\033[0m\n"
+}
 
 show_notification () {
 	expire_time="${ESODB_DESKTOP_NOTIFICATIONS_EXPIRE:-10000}"

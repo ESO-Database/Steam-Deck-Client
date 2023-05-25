@@ -112,7 +112,7 @@ echo "The installation is complete!"
 echo "This window will be closed in 20 seconds..."
 
 
-#setsid xdg-open "https://www.eso-database.com/steam-deck-installation-complete/" >/dev/null 2>&1
+setsid xdg-open "https://www.eso-database.com/steam-deck-installation-complete/" >/dev/null 2>&1
 sleep 20
 
 # TODO: Try to remove installation desktop shortcut
