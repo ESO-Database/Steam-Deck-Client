@@ -67,18 +67,24 @@ if [ ! "${LOCAL_VERSION}" = "${REMOTE_VERSION}" ]; then
   print_success "Done"
 
 
-  print_status "Superuser installation steps"
-  print_info_warning "Superuser privileges are required for the following installation steps.\nIf you do not have a superuser password set up on your Steam deck, please read the instructions:\n\nhttps://www.eso-database.com/steam-deck-setup"
+  #print_status "Superuser installation steps"
+  #print_info_warning "Superuser privileges are required for the following installation steps.\nIf you do not have a superuser password set up on your Steam deck, please read the instructions:\n\nhttps://www.eso-database.com/steam-deck-setup"
 
 
   print_status "Updating background services"
-  sudo cp -f /home/deck/Applications/ESO-Database/install/systemd/eso-database-uploader.service /etc/systemd/system/eso-database-uploader.service
-  sudo cp -f /home/deck/Applications/ESO-Database/install/systemd/eso-database-addon-updater.service /etc/systemd/system/eso-database-addon-updater.service
-  sudo cp -f /home/deck/Applications/ESO-Database/install/systemd/eso-database-addon-updater.timer /etc/systemd/system/eso-database-addon-updater.timer
+  #sudo cp -f /home/deck/Applications/ESO-Database/install/systemd/eso-database-uploader.service /etc/systemd/system/eso-database-uploader.service
+  #sudo cp -f /home/deck/Applications/ESO-Database/install/systemd/eso-database-addon-updater.service /etc/systemd/system/eso-database-addon-updater.service
+  #sudo cp -f /home/deck/Applications/ESO-Database/install/systemd/eso-database-addon-updater.timer /etc/systemd/system/eso-database-addon-updater.timer
+	cp -f /home/deck/Applications/ESO-Database/install/systemd/eso-database-uploader.service /home/deck/.config/systemd/user/eso-database-uploader.service
+  cp -f /home/deck/Applications/ESO-Database/install/systemd/eso-database-addon-updater.service /home/deck/.config/systemd/user/eso-database-addon-updater.service
+  cp -f /home/deck/Applications/ESO-Database/install/systemd/eso-database-addon-updater.timer /home/deck/.config/systemd/user/eso-database-addon-updater.timer
 
-  sudo systemctl daemon-reload
-  sudo systemctl try-restart eso-database-uploader.service
-  sudo systemctl try-restart eso-database-addon-updater.timer
+  #sudo systemctl daemon-reload
+  #sudo systemctl try-restart eso-database-uploader.service
+  #sudo systemctl try-restart eso-database-addon-updater.timer
+  systemctl --user daemon-reload
+  systemctl --user try-restart eso-database-uploader.service
+  systemctl --user try-restart eso-database-addon-updater.timer
 
 
 	print_status "Updating Launcher entries"

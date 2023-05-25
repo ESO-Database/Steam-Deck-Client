@@ -12,7 +12,7 @@ upload_sv_file () {
 	is_compressed=0
 
 	# Wait a few seconds until the ESO logout screen is over
-	if [ ${USER_INTERACTION} = "false" ]; then
+	if [ "${USER_INTERACTION}" = "false" ]; then
 		sleep ${ESODB_UPLOADER_WAIT_TIME}
 	fi
 

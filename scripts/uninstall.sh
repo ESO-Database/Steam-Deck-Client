@@ -23,20 +23,28 @@ case $yn in
 		esac
 
 
-		print_info "Superuser installation steps\n"
-    print_info_warning "Superuser privileges are required for the following uninstall steps.\nIf you do not have a superuser password set up on your Steam deck, please read the instructions:\n\nhttps://www.eso-database.com/steam-deck-setup\n\n "
+		#print_info "Superuser installation steps\n"
+    #print_info_warning "Superuser privileges are required for the following uninstall steps.\nIf you do not have a superuser password set up on your Steam deck, please read the instructions:\n\nhttps://www.eso-database.com/steam-deck-setup\n\n "
 
 		print_info "Uninstalling background services\n"
-    sudo systemctl stop eso-database-uploader.service
-    sudo systemctl disable eso-database-uploader.service
-		sudo rm -f /etc/systemd/system/eso-database-uploader.service
+    #sudo systemctl stop eso-database-uploader.service
+    #sudo systemctl disable eso-database-uploader.service
+		#sudo rm -f /etc/systemd/system/eso-database-uploader.service
+		systemctl --user stop eso-database-uploader.service
+    systemctl --user disable eso-database-uploader.service
+    rm -f /home/deck/.config/systemd/user/eso-database-uploader.service
 
-    sudo systemctl stop eso-database-addon-updater.timer
-    sudo systemctl disable eso-database-addon-updater.timer
-    sudo rm -f /etc/systemd/system/eso-database-addon-updater.service
-    sudo rm -f /etc/systemd/system/eso-database-addon-updater.timer
+    #sudo systemctl stop eso-database-addon-updater.timer
+    #sudo systemctl disable eso-database-addon-updater.timer
+    #sudo rm -f /etc/systemd/system/eso-database-addon-updater.service
+    #sudo rm -f /etc/systemd/system/eso-database-addon-updater.timer
+    systemctl --user stop eso-database-addon-updater.timer
+    systemctl --user disable eso-database-addon-updater.timer
+    rm -f /home/deck/.config/systemd/user/eso-database-addon-updater.service
+    rm -f /home/deck/.config/systemd/user/eso-database-addon-updater.timer
 
-		sudo systemctl daemon-reload
+		#sudo systemctl daemon-reload
+		systemctl --user daemon-reload
 
 		print_success "Done\n"
 
