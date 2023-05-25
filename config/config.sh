@@ -114,6 +114,8 @@ export ESODB_AUTH_USER_URL="https://auth.eso-database.com/redirect-auth"
 # Misc options
 ##
 
+# The GitHub Release API URL to fetch release information
+export ESODB_GITHUB_URL="https://api.github.com/repos/ESO-Database/Steam-Deck-Client/releases/latest"
 # The number of seconds until the login loop is marked as failed
 export ESODB_LOGIN_LOOP_TIMEOUT_SECONDS=300
 
