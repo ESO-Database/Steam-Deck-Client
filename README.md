@@ -6,18 +6,9 @@
 
 With the ESO-Database Steam Deck Client you update the needed The Elder Scrolls Online AddOns and automatically upload the AddOn data after your game sessions with a background service.
 
-You have to setup a superuser password in order to enable automatic uploads. For more information, see the <a href="#requirements">requirements</a> section.
-
-## Requirements
-First, head into Desktop mode if you haven’t already. To do so, go to Power, then Desktop mode in the Steam button menu. Once loaded in, enter the menu on the taskbar and find Terminal. This will load up a terminal page.
-
-Now, all you have to do is type `passwd`
-
-After that, you will be prompted to choose and repeat the password. Once this is done, you can proceed to the <a href="#installation">Installation</a> section.
-
 ## Installation
 Right-click on the following link and select "Save Link As" and save the file to your Steam deck in desktop mode.  
-<a href="https://raw.githubusercontent.com/ESO-Database/Steam-Deck-Client/master/Install-ESO-Database.desktop?token=GHSAT0AAAAAACBIEXY6FOUEQCEQL6OJ5ZBCZBZMI7Q">👉 Save this link to your Steam Deck in Desktop Mode!</a>  
+<a href="https://raw.githubusercontent.com/ESO-Database/Steam-Deck-Client/master/Install-ESO-Database.desktop">👉 Save this link to your Steam Deck in Desktop Mode!</a>  
 
 After that, simply open the shortcut to start the installation of ESO Database Steam Deck Integration.
 
@@ -32,15 +23,15 @@ Open a terminal and navigate to the following path:
 #### List of all available scripts
 The following scripts can be used to manage the ESO-Database integration.
 
-| Script                       | Description                                                                                                                                                                                   | Requires Super User Password |
-|:-----------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------:|
-| disable-autoupload.sh        | Disables the auto upload service that is running in the background.                                                                                                                           |              ✔               |
-| enable-autoupload.sh         | Enables the auto upload service that is running in the background.                                                                                                                            |              ✔               |
-| disable-addon-autoupdate.sh  | Disables the auto AddOn update service that is running in the background.                                                                                                                     |              ✔               |
-| enable-addon-autoupdate.sh   | Enables the auto AddOn update service that is running in the background.                                                                                                                      |              ✔               |
-| login.sh                     | Opens the ESO-Database.com authentication website to log in with your ESO-Database user account. The credentials are stored, you don't need this script every time you start the Steam Deck.  |                              |
-| logout.sh                    | Deletes the stored credentials if you have logged in with an ESO-Database user account before.                                                                                                |                              |
-| update.sh                    | Checks for a new release of the ESO-Database Steam Deck integration. If an update is available, the update is executed.                                                                       |              ✔               |
-| update-addons.sh             | Fetches all available ESO-Database AddOns and downloads the latest version of each AddOn.                                                                                                     |                              |
-| upload-addon-data.sh         | If you have disabled the auto upload service or want to upload your data manually, you can run this script to upload the exported data.                                                       |                              |
+| Script                       | Description                                                                                                                                                                                   |
+|:-----------------------------|:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| disable-autoupload.sh        | Disables the auto upload service that is running in the background.                                                                                                                           |
+| enable-autoupload.sh         | Enables the auto upload service that is running in the background.                                                                                                                            |
+| disable-addon-autoupdate.sh  | Disables the auto AddOn update service that is running in the background.                                                                                                                     |
+| enable-addon-autoupdate.sh   | Enables the auto AddOn update service that is running in the background.                                                                                                                      |
+| login.sh                     | Opens the ESO-Database.com authentication website to log in with your ESO-Database user account. The credentials are stored, you don't need this script every time you start the Steam Deck.  |
+| logout.sh                    | Deletes the stored credentials if you have logged in with an ESO-Database user account before.                                                                                                |
+| update.sh                    | Checks for a new release of the ESO-Database Steam Deck integration. If an update is available, the update is executed.                                                                       |
+| update-addons.sh             | Fetches all available ESO-Database AddOns and downloads the latest version of each AddOn.                                                                                                     |
+| upload-addon-data.sh         | If you have disabled the auto upload service or want to upload your data manually, you can run this script to upload the exported data.                                                       |
 

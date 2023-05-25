@@ -80,14 +80,8 @@ else
 	print_info "Already signed in as \033[1;34m${user_name}\033[0m Skipping login step."
 fi
 
-#print_status "Superuser installation steps"
-#print_info_warning "Superuser privileges are required for the following installation steps.\nIf you do not have a superuser password set up on your Steam deck, please read the instructions:\n\nhttps://www.eso-database.com/steam-deck-setup"
-
 
 print_status "Install background services"
-#sudo cp -f /home/deck/Applications/ESO-Database/install/systemd/eso-database-uploader.service /etc/systemd/system/eso-database-uploader.service
-#sudo cp -f /home/deck/Applications/ESO-Database/install/systemd/eso-database-addon-updater.service /etc/systemd/system/eso-database-addon-updater.service
-#sudo cp -f /home/deck/Applications/ESO-Database/install/systemd/eso-database-addon-updater.timer /etc/systemd/system/eso-database-addon-updater.timer
 cp -f /home/deck/Applications/ESO-Database/install/systemd/eso-database-uploader.service /home/deck/.config/systemd/user/eso-database-uploader.service
 cp -f /home/deck/Applications/ESO-Database/install/systemd/eso-database-addon-updater.service /home/deck/.config/systemd/user/eso-database-addon-updater.service
 cp -f /home/deck/Applications/ESO-Database/install/systemd/eso-database-addon-updater.timer /home/deck/.config/systemd/user/eso-database-addon-updater.timer
