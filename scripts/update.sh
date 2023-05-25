@@ -8,7 +8,7 @@ UPDATE_TEMP_DIR=/tmp/esodb_client_update
 ESODB_DESKTOP_APPLICATION_PATH="/home/deck/.local/share/applications"
 RELEASE_JSON=$(curl --location --silent ${ESODB_GITHUB_URL})
 REMOTE_VERSION="$(echo "${RELEASE_JSON}" | jq --raw-output '.tag_name')"
-LOCAL_VERSION=$(cat /home/deck/Applications/ESO-Database/version.txt)
+LOCAL_VERSION=$(cat /home/deck/Applications/ESO-Database/version.txt | xargs) # xargs trims the string
 DOWNLOAD_URL="$(echo "${RELEASE_JSON}" | jq -r '.assets[].browser_download_url')"
 
 if [ ! "${LOCAL_VERSION}" = "${REMOTE_VERSION}" ]; then
