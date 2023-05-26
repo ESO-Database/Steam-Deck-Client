@@ -9,8 +9,11 @@ print_info () {
   echo -e "\033[1m$1\033[0m"
 }
 
+print_banner "\n-----------------------------------------------------------------"
+print_banner " This script will uninstall the ESO-Database SteamDeck Client"
+print_banner "-----------------------------------------------------------------"
 
-read -p "Do you really want to uninstall the ESO-Database Client? (y/n) " yn
+read -p "$(echo -e "\033[1mDo you really want to uninstall the ESO-Database Client? (y/n)\033[0m") " yn
 
 case $yn in
 	[yY] ) echo -e ""
@@ -21,11 +24,13 @@ case $yn in
 				if [ -d "${ESODB_APP_DATA_PATH}" ]; then
 					rm -fr "${ESODB_APP_DATA_PATH}"
 				fi
-				print_success "Done\n"
+				print_success "Done"
 		esac
 
+		echo -e "\n"
 
-		print_info "Uninstalling background services\n"
+
+		print_info "Uninstalling background services"
 		systemctl --user stop eso-database-uploader.service
     systemctl --user disable eso-database-uploader.service
     rm -f /home/deck/.config/systemd/user/eso-database-uploader.service
@@ -37,7 +42,7 @@ case $yn in
 
 		systemctl --user daemon-reload
 
-		print_success "Done\n"
+		print_success "Done"
 
 
 		print_info "Removing AddOns..."
@@ -49,20 +54,22 @@ case $yn in
 		rm -fr "${ESODB_ESO_PROTON_SV_PATH}/ESODatabaseGameDataExport.lua"
 		rm -fr "${ESODB_ESO_PROTON_SV_PATH}/ESODatabaseLeaderboardExport.lua"
 
-		print_success "Done\n"
+		print_success "Done"
 
 
 		print_info "Removing Desktop shortcuts..."
 		rm -f $(ls -d ${ESODB_DESKTOP_APPLICATION_PATH}/ESODB-Client-*)
-		print_success "Done\n\n"
+		print_success "Done\n"
 
 
 		print_info "Removing application folder..."
 		rm -fr /home/deck/Applications/ESO-Database
-		print_success "Done\n"
+		print_success "Done"
 
 
-		print_success "The uninstallation of the ESO Database Client has been completed successfully!"
+		print_banner "\n-------------------------------------------------------------------------------------------"
+    print_banner " The uninstallation of the ESO Database SteamDeck client has been successfully completed!"
+    print_banner "-------------------------------------------------------------------------------------------"
 
 		exit;;
 	[nN] ) echo "Aborting, no change has been made.";

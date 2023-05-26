@@ -29,10 +29,18 @@ print_info_warning () {
 	echo -e "\033[0;33m$1\033[0m\n"
 }
 print_success () {
-	echo -e "\033[1;36m-> $1\033[0m\n"
+	echo -e "\033[1;36m=> $1\033[0m\n"
+}
+print_banner () {
+	echo -e "\033[1;36m$1\033[0m\n"
 }
 
 trap report_error ERR
+
+
+print_banner "\n-------------------------------------------------------------"
+print_banner " This script will install the ESO-Database SteamDeck Client"
+print_banner "-------------------------------------------------------------"
 
 
 print_status "Creating required directories..."
@@ -106,7 +114,11 @@ if [ -f /home/deck/Desktop/Install-ESO-Database.desktop ]; then
 fi
 
 
-echo -e "\n\033[1;36mThe installation was successfully completed. You can now start The Elder Scrolls Online.\033[0m"
+print_banner "\n-------------------------------------------------------------------------------------------"
+print_banner " The installation of the ESO Database SteamDeck client has been completed successfully."
+print_banner " You can now start The Elder Scrolls Online, following a game session your data\n will be transferred automatically in the background."
+print_banner "-------------------------------------------------------------------------------------------"
+
 echo -e "This window will be closed in 20 seconds...\n"
 
 

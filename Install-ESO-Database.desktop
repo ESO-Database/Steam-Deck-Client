@@ -1,7 +1,7 @@
 [Desktop Entry]
 Comment[en_US]=
 Comment=
-Exec=sh -c 'curl -L -H "Cache-Control: no-cache, no-store" https://raw.githubusercontent.com/ESO-Database/Steam-Deck-Client/master/install.sh | bash'
+Exec=sh -c 'curl -L --silent -H "Cache-Control: no-cache, no-store" https://raw.githubusercontent.com/ESO-Database/Steam-Deck-Client/master/install.sh | bash'
 GenericName[en_US]=
 GenericName=test
 MimeType=
