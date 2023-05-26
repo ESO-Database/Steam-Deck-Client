@@ -6,7 +6,7 @@ source /home/deck/Applications/ESO-Database/scripts/tools/functions.sh
 ESODB_DESKTOP_APPLICATION_PATH="/home/deck/.local/share/applications"
 
 print_info () {
-  printf "\033[1m$1\033[0m"
+  echo -e "\033[1m$1\033[0m"
 }
 
 

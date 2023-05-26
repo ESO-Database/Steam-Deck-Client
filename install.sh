@@ -8,28 +8,28 @@ ESODB_DESKTOP_APPLICATION_PATH="/home/deck/.local/share/applications"
 ESODB_APPLICATION_PATH="/home/deck/Applications/ESO-Database"
 
 report_error() {
-    FAILURE="$(caller): ${BASH_COMMAND}"
-    print_error "${FAILURE}"
+	FAILURE="$(caller): ${BASH_COMMAND}"
+	print_error "${FAILURE}"
 }
 print_error () {
-  printf "\n"
-  printf "\033[1;31m-----------------------\033[0m\n"
-	printf "\033[1;31m------   ERROR   ------\033[0m\n"
-	printf "\033[1;31m-----------------------\033[0m\n"
-	printf "\033[0;31m$1\033[0m\n"
+  echo -e "\n"
+  echo -e "\033[1;31m-----------------------\033[0m\n"
+	echo -e "\033[1;31m------   ERROR   ------\033[0m\n"
+	echo -e "\033[1;31m-----------------------\033[0m\n"
+	echo -e "\033[0;31m$1\033[0m\n"
 	sleep 20
 }
 print_status () {
-  printf "\n\033[1;32m# $1\033[0m\n"
+  echo -e "\033[1;32m# $1\033[0m"
 }
 print_info () {
-  printf "\033[0m$1\033[0m\n\n"
+  echo -e "\033[0m$1\033[0m\n"
 }
 print_info_warning () {
-	printf "\033[0;33m$1\033[0m\n"
+	echo -e "\033[0;33m$1\033[0m\n"
 }
 print_success () {
-	printf "\033[1;36m-> $1\033[0m\n"
+	echo -e "\033[1;36m-> $1\033[0m\n"
 }
 
 trap report_error ERR
@@ -39,16 +39,19 @@ print_status "Creating required directories..."
 mkdir -p "${ESODB_APPLICATION_PATH}"
 mkdir -p /home/deck/.eso-database-client
 mkdir -p /home/deck/.eso-database-client/meta
+print_success "Done"
 
 
 print_status "Downloading ESO-Database Steam Deck Client files..."
 echo "${ESODB_URL}"
 curl --progress-bar --location "${ESODB_URL}" -o "${ESODB_APPLICATION_PATH}/core.zip"
+print_success "Done"
 
 print_status "Extracting files..."
 cd "${ESODB_APPLICATION_PATH}"
 unzip -qq -o "${ESODB_APPLICATION_PATH}/core.zip"
 rm -f "${ESODB_APPLICATION_PATH}/core.zip"
+print_success "Done"
 
 print_status "Set script permissions..."
 chmod +x "${ESODB_APPLICATION_PATH}/scripts/"*.sh
@@ -61,9 +64,11 @@ if [ "${login_status}" = "false" ]; then
 	print_info "Please login in with your ESO-Database account..."
 	sleep 2
 	eval "${ESODB_APPLICATION_PATH}/scripts/login.sh"
+	print_success "Done"
 else
 	user_name=$("${ESODB_APPLICATION_PATH}/scripts/tools/get-user-name.sh")
 	print_info "Already signed in as \033[1;34m${user_name}\033[0m Skipping login step."
+	print_success "Done"
 fi
 
 
@@ -76,11 +81,13 @@ print_status "Install background services"
 cp -f "${ESODB_APPLICATION_PATH}/install/systemd/eso-database-uploader.service" /home/deck/.config/systemd/user/eso-database-uploader.service
 cp -f "${ESODB_APPLICATION_PATH}/install/systemd/eso-database-addon-updater.service" /home/deck/.config/systemd/user/eso-database-addon-updater.service
 cp -f "${ESODB_APPLICATION_PATH}/install/systemd/eso-database-addon-updater.timer" /home/deck/.config/systemd/user/eso-database-addon-updater.timer
+print_success "Done"
 
 
 print_status "Enable and start background services"
 eval "${ESODB_APPLICATION_PATH}/scripts/enable-autoupload.sh"
 eval "${ESODB_APPLICATION_PATH}/scripts/enable-addon-autoupdate.sh"
+print_success "Done"
 
 
 print_status "Creating Launcher entries"
@@ -99,8 +106,8 @@ if [ -f /home/deck/Desktop/Install-ESO-Database.desktop ]; then
 fi
 
 
-printf "\n\nThe installation is complete!\n"
-printf "This window will be closed in 20 seconds..."
+echo -e "\n\033[1;36mThe installation was successfully completed. You can now start The Elder Scrolls Online.\033[0m"
+echo -e "This window will be closed in 20 seconds...\n"
 
 
 setsid xdg-open "https://www.eso-database.com/steam-deck-installation-complete/" >/dev/null 2>&1

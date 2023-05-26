@@ -1,7 +1,10 @@
 #!/bin/bash
 
+source /home/deck/Applications/ESO-Database/config/config.sh
+source /home/deck/Applications/ESO-Database/scripts/tools/functions.sh
+
 systemctl --user daemon-reload
 systemctl --user stop eso-database-uploader.service
 systemctl --user disable eso-database-uploader.service
 
-echo "OK"
+print_success "The ESO database upload service has been disabled and stopped"

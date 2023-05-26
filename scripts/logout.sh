@@ -26,12 +26,12 @@ if [ ! -z "${user_name}" ]; then
 	if [ "${desktop_file_call}" == "true" ]; then
 		show_notification "The user ${user_name} has been logged out. If you want to log in with another account, please run the login shortcut from the launcher."
 	else
-		printf "The user \033[1;34m${user_name}\033[0m has been logged out.\n\nIf you want to log in with another account, please run the login.sh script.\n"
+		print_status "The user \033[1;34m${user_name}\033[0m has been logged out.\n\nIf you want to log in with another account, please run the login.sh script.\n"
 	fi
 else
 	if [ "${desktop_file_call}" == "true" ]; then
 		show_notification "You are not logged in, so no logout is required! If you want to log in, please run the log in shortcut from the launcher."
 	else
-		printf "You are not logged in, so no logout is required!\n\nIf you want to log in, please run the login.sh script.\n"
+		print_status "You are not logged in, so no logout is required!\n\nIf you want to log in, please run the login.sh script.\n"
 	fi
 fi

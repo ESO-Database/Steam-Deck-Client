@@ -1,24 +1,24 @@
 #!/bin/bash
 
 print_status () {
-  printf "\033[1m$1\033[0m\n\n"
+  echo -e "\033[1m$1\033[0m\n\n"
 }
 
 print_error () {
-  printf "\n"
-  printf "\033[1;31m-----------------------\033[0m\n"
-	printf "\033[1;31m------   ERROR   ------\033[0m\n"
-	printf "\033[1;31m-----------------------\033[0m\n"
-	printf "\033[0;31m$1\033[0m\n"
+  echo -e "\n"
+  echo -e "\033[1;31m-----------------------\033[0m\n"
+	echo -e "\033[1;31m------   ERROR   ------\033[0m\n"
+	echo -e "\033[1;31m-----------------------\033[0m\n"
+	echo -e "\033[0;31m$1\033[0m\n"
 }
 
 print_success () {
-	printf "\n"
-	printf "\033[1;32m$1\033[0m\n"
+	echo -e "\n"
+	echo -e "\033[1;32m$1\033[0m\n"
 }
 
 print_info_warning () {
-	printf "\033[0;33m$1\033[0m\n"
+	echo -e "\033[0;33m$1\033[0m\n"
 }
 
 show_notification () {
