@@ -1,0 +1,18 @@
+[Desktop Entry]
+Comment[en_US]=
+Comment=
+Exec=sh -c 'curl -L --silent -H "Cache-Control: no-cache, no-store" https://raw.githubusercontent.com/ESO-Database/Steam-Deck-Client/master/install.sh | bash'
+GenericName[en_US]=Upload Client
+GenericName=Upload Client
+MimeType=
+Name[en]=Install ESO-Database Client
+Name=Install ESO-Database Client
+Path=
+StartupNotify=false
+Terminal=true
+TerminalOptions=
+Type=Application
+X-DBUS-ServiceName=
+X-DBUS-StartupType=
+X-KDE-SubstituteUID=false
+X-KDE-Username=

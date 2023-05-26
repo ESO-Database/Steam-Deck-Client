@@ -109,8 +109,8 @@ print_success "Done"
 
 
 # Remove the install Desktop icon
-if [ -f /home/deck/Desktop/Install-ESO-Database.desktop ]; then
-	rm -f /home/deck/Desktop/Install-ESO-Database.desktop
+if [ -f /home/deck/Desktop/ESO-Database.desktop ]; then
+	rm -f /home/deck/Desktop/ESO-Database.desktop
 fi
 
 

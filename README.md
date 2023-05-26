@@ -8,7 +8,7 @@ With the ESO-Database Steam Deck Client you update the needed The Elder Scrolls 
 
 ## Installation
 Right-click on the following link and select "Save Link As" and save the file to your Steam deck in desktop mode.  
-<a href="https://raw.githubusercontent.com/ESO-Database/Steam-Deck-Client/master/Install-ESO-Database.desktop">👉 Save this link to your Steam Deck in Desktop Mode!</a>  
+<a href="https://raw.githubusercontent.com/ESO-Database/Steam-Deck-Client/master/ESO-Database.desktop">👉 Save this link to your Steam Deck in Desktop Mode!</a>  
 
 After that, simply open the shortcut to start the installation of ESO Database Steam Deck Integration.
 
