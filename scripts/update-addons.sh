@@ -84,7 +84,6 @@ if [ "${fetch_addons_result}" = "ok" ]; then
   		echo -e "[\033[1;35m${folder_name}\033[0m] Extracting archive..."
   		unzip -qq -o "${temp_file_path}" -d "${ESODB_ESO_PROTON_ADDONS_LIVE_PATH}"
 
-
 			if [ "${desktop_file_call}" == "true" ]; then
 				show_notification "${folder_name} version ${version_string} successfully installed/updated!"
 			fi
@@ -97,4 +96,8 @@ if [ "${fetch_addons_result}" = "ok" ]; then
   fi
 else
 	print_error "Could not get AddOns meta information!"
+fi
+
+if [ "${desktop_file_call}" == "true" ]; then
+	sleep 5
 fi

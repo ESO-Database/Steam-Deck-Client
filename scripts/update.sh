@@ -13,6 +13,16 @@ ESODB_DESKTOP_APPLICATION_PATH="/home/deck/.local/share/applications"
 ESODB_APPLICATION_PATH="/home/deck/Applications/ESO-Database"
 
 
+desktop_file_call="false"
+
+while getopts 'd' flag; do
+  case "${flag}" in
+    d) desktop_file_call='true' ;;
+    *) echo "Unknown flag" ;;
+  esac
+done
+
+
 if [ ! "${LOCAL_VERSION}" = "${REMOTE_VERSION}" ]; then
 
 	print_status "Downloading new version ${REMOTE_VERSION}"
@@ -82,4 +92,8 @@ if [ ! "${LOCAL_VERSION}" = "${REMOTE_VERSION}" ]; then
 	print_success "The update to version ${REMOTE_VERSION} has been successfully performed!"
 else
 	print_status "You have the latest version installed! (Version ${LOCAL_VERSION})"
+fi
+
+if [ "${desktop_file_call}" == "true" ]; then
+	sleep 5
 fi
