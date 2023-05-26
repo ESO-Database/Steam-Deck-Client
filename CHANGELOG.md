@@ -1,3 +1,8 @@
+# 1.0.4
+- Test release
+- Refactoring
+- Updater test
+
 # 1.0.3
 - Test release
 - Refactoring 

@@ -17,7 +17,7 @@ jobs:
       - name: Get release changelog
         run: |
           full_changelog=$(cat CHANGELOG.md)
-          changelog=$(php -r "preg_match_all('/# ${{ github.ref_name }}\n([\-\d\w\W]+)/m', '${full_changelog}', \$matches); echo trim(\$matches[1][0]);")
+          changelog=$(php -r "preg_match_all('/((?:# ${{ github.ref_name }}\R)((-(.*)\R+)+))/m', '${full_changelog}', \$matches); echo trim(\$matches[1][0]);")
           echo "${changelog}" > changelog.txt
 
       - name: Read changelog from file
