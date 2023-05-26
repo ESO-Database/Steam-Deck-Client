@@ -55,20 +55,6 @@ chmod +x "${ESODB_APPLICATION_PATH}/scripts/"*.sh
 print_success "Done"
 
 
-print_status "Fetching Elder Scrolls Online AddOns meta data..."
-fetch_addons_result=$("${ESODB_APPLICATION_PATH}/scripts/api/get-addons.sh")
-if [ "${fetch_addons_result}" = "ok" ]; then
-	print_success "OK"
-else
-	print_error "Could not get AddOns meta information!"
-fi
-
-
-print_status "Installing Elder Scrolls Online AddOns..."
-eval "${ESODB_APPLICATION_PATH}/scripts/update-addons.sh"
-print_success "Done"
-
-
 print_status "ESO-Database Account login"
 login_status=$("${ESODB_APPLICATION_PATH}/scripts/api/get-auth-status.sh")
 if [ "${login_status}" = "false" ]; then
@@ -79,6 +65,11 @@ else
 	user_name=$("${ESODB_APPLICATION_PATH}/scripts/tools/get-user-name.sh")
 	print_info "Already signed in as \033[1;34m${user_name}\033[0m Skipping login step."
 fi
+
+
+print_status "Installing Elder Scrolls Online AddOns..."
+eval "${ESODB_APPLICATION_PATH}/scripts/update-addons.sh"
+print_success "Done"
 
 
 print_status "Install background services"
