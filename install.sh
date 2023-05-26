@@ -65,7 +65,7 @@ fi
 
 
 print_status "Installing Elder Scrolls Online AddOns..."
-exec "${ESODB_APPLICATION_PATH}/scripts/update-addons.sh"
+eval "${ESODB_APPLICATION_PATH}/scripts/update-addons.sh"
 print_success "Done"
 
 
@@ -74,7 +74,7 @@ login_status=$("${ESODB_APPLICATION_PATH}/scripts/api/get-auth-status.sh")
 if [ "${login_status}" = "false" ]; then
 	print_info "Please login in with your ESO-Database account..."
 	sleep 2
-	exec "${ESODB_APPLICATION_PATH}/scripts/login.sh"
+	eval "${ESODB_APPLICATION_PATH}/scripts/login.sh"
 else
 	user_name=$("${ESODB_APPLICATION_PATH}/scripts/tools/get-user-name.sh")
 	print_info "Already signed in as \033[1;34m${user_name}\033[0m Skipping login step."
@@ -88,8 +88,8 @@ cp -f "${ESODB_APPLICATION_PATH}/install/systemd/eso-database-addon-updater.time
 
 
 print_status "Enable and start background services"
-exec "${ESODB_APPLICATION_PATH}/scripts/enable-autoupload.sh"
-exec "${ESODB_APPLICATION_PATH}/scripts/enable-addon-autoupdate.sh"
+eval "${ESODB_APPLICATION_PATH}/scripts/enable-autoupload.sh"
+eval "${ESODB_APPLICATION_PATH}/scripts/enable-addon-autoupdate.sh"
 
 
 print_status "Creating Launcher entries"
