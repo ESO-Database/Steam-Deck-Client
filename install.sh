@@ -95,9 +95,9 @@ print_success "Done"
 
 
 print_status "Enable and start background services"
-eval "${ESODB_APPLICATION_PATH}/scripts/enable-autoupload.sh"
-eval "${ESODB_APPLICATION_PATH}/scripts/enable-autoupdate.sh"
-eval "${ESODB_APPLICATION_PATH}/scripts/enable-addon-autoupdate.sh"
+eval "${ESODB_APPLICATION_PATH}/scripts/enable-auto-upload.sh"
+eval "${ESODB_APPLICATION_PATH}/scripts/enable-auto-update.sh"
+eval "${ESODB_APPLICATION_PATH}/scripts/enable-addon-auto-update.sh"
 print_success "Done"
 
 

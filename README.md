@@ -23,18 +23,18 @@ Open a terminal and navigate to the following path:
 #### List of all available scripts
 The following scripts can be used to manage the ESO-Database integration.
 
-| Script                      | Description                                                                                                                                                                                  |
-|:----------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| disable-autoupload.sh       | Disables the auto upload service that is running in the background.                                                                                                                          |
-| enable-autoupload.sh        | Enables the auto upload service that is running in the background.                                                                                                                           |
-| disable-addon-autoupdate.sh | Disables the auto AddOn update service that is running in the background.                                                                                                                    |
-| enable-addon-autoupdate.sh  | Enables the auto AddOn update service that is running in the background.                                                                                                                     |
-| disable-autoupdate.sh       | Disables the auto Client update service that is running in the background.                                                                                                                   |
-| enable-autoupdate.sh        | Enables the auto Client update service that is running in the background.                                                                                                                    |
-| login.sh                    | Opens the ESO-Database.com authentication website to log in with your ESO-Database user account. The credentials are stored, you don't need this script every time you start the Steam Deck. |
-| logout.sh                   | Deletes the stored credentials if you have logged in with an ESO-Database user account before.                                                                                               |
-| uninstall.sh                | This will completely uninstall the ESO-Database Client from your SteamDeck.                                                                                                                  |
-| update.sh                   | Checks for a new release of the ESO-Database Steam Deck integration. If an update is available, the update is executed.                                                                      |
-| update-addons.sh            | Fetches all available ESO-Database AddOns and downloads the latest version of each AddOn.                                                                                                    |
-| upload-addon-data.sh        | If you have disabled the auto upload service or want to upload your data manually, you can run this script to upload the exported data.                                                      |
+| Script                       | Description                                                                                                                                                                                  |
+|:-----------------------------|:---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| disable-auto-upload.sh       | Disables the auto upload service that is running in the background.                                                                                                                          |
+| enable-auto-upload.sh        | Enables the auto upload service that is running in the background.                                                                                                                           |
+| disable-auto-update.sh       | Disables the auto Client update service that is running in the background.                                                                                                                   |
+| enable-auto-update.sh        | Enables the auto Client update service that is running in the background.                                                                                                                    |
+| disable-addon-auto-update.sh | Disables the auto AddOn update service that is running in the background.                                                                                                                    |
+| enable-addon-auto-update.sh  | Enables the auto AddOn update service that is running in the background.                                                                                                                     |
+| login.sh                     | Opens the ESO-Database.com authentication website to log in with your ESO-Database user account. The credentials are stored, you don't need this script every time you start the Steam Deck. |
+| logout.sh                    | Deletes the stored credentials if you have logged in with an ESO-Database user account before.                                                                                               |
+| uninstall.sh                 | This will completely uninstall the ESO-Database Client from your SteamDeck.                                                                                                                  |
+| update.sh                    | Checks for a new release of the ESO-Database Steam Deck integration. If an update is available, the update is executed.                                                                      |
+| update-addons.sh             | Fetches all available ESO-Database AddOns and downloads the latest version of each AddOn.                                                                                                    |
+| upload-addon-data.sh         | If you have disabled the auto upload service or want to upload your data manually, you can run this script to upload the exported data.                                                      |
 
