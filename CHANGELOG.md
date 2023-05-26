@@ -1,3 +1,6 @@
+# 1.0.2
+- Test another release
+
 # 1.0.1
 - Test Release
 
