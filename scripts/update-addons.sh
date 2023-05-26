@@ -78,10 +78,10 @@ if [ "${fetch_addons_result}" = "ok" ]; then
   		download_file_name=$(echo "${download_file_url##*/}")
   		temp_file_path="${ESODB_DOWNLOAD_TEMP_DIR}/${download_file_name}"
 
-			echo -e "[\033[1;35m${folder_name}\033[0m] Downloading archive...\n"
+			echo -e "[\033[1;35m${folder_name}\033[0m] Downloading archive..."
   		curl --silent --header "User-Agent: ${ESODB_API_USER_AGENT}" -o "${temp_file_path}" "${download_file_url}"
 
-  		echo -e "[\033[1;35m${folder_name}\033[0m] Extracting archive...\n"
+  		echo -e "[\033[1;35m${folder_name}\033[0m] Extracting archive..."
   		unzip -qq -o "${temp_file_path}" -d "${ESODB_ESO_PROTON_ADDONS_LIVE_PATH}"
 
 
@@ -89,7 +89,7 @@ if [ "${fetch_addons_result}" = "ok" ]; then
 				show_notification "${folder_name} version ${version_string} successfully installed/updated!"
 			fi
 
-  		echo -e "[\033[1;35m${folder_name}\033[0m] Done! (Version ${version_string})\n"
+  		echo -e "[\033[1;35m${folder_name}\033[0m] Done! (Version ${version_string})"
   		echo " "
     done
   else

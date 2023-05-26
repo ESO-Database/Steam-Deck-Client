@@ -13,7 +13,6 @@ print_error () {
 }
 
 print_success () {
-	echo -e "\n"
 	echo -e "\033[1;32m$1\033[0m\n"
 }
 
