@@ -1,0 +1,9 @@
+[Unit]
+Description=The ESO-Database updater.
+After=network.target
+
+[Service]
+ExecStart=/home/deck/Applications/ESO-Database/scripts/update.sh
+
+[Install]
+WantedBy=default.target

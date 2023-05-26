@@ -35,6 +35,11 @@ case $yn in
     systemctl --user disable eso-database-uploader.service
     rm -f /home/deck/.config/systemd/user/eso-database-uploader.service
 
+		systemctl --user stop eso-database-updater.timer
+		systemctl --user disable eso-database-updater.timer
+		rm -f /home/deck/.config/systemd/user/eso-database-updater.service
+		rm -f /home/deck/.config/systemd/user/eso-database-updater.timer
+
     systemctl --user stop eso-database-addon-updater.timer
     systemctl --user disable eso-database-addon-updater.timer
     rm -f /home/deck/.config/systemd/user/eso-database-addon-updater.service
