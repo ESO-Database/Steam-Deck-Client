@@ -6,6 +6,7 @@ upload_sv_file () {
 	SV_FILE_PATH="$2"
 	SV_FILE_NAME="$3"
 	USER_INTERACTION="$4"
+	SHOW_NOTIFICATION="$5"
 
   auth_secure_token=$(get_auth_secure_token)
 	upload_name=""
@@ -35,12 +36,29 @@ upload_sv_file () {
 		upload_name="${SV_FILE_NAME}"
 	fi
 
-	echo "Uploading ${upload_name}"
-	curl --silent "${ENDPOINT}" \
+	echo "Uploading ${upload_name}..."
+
+	UPLOAD_RESPONSE=$(curl --silent "${ENDPOINT}" \
 		--header "User-Agent: ${ESODB_API_USER_AGENT}" \
 		--header "X-User-Token: ${auth_secure_token}" \
 		--form "file=@${ESODB_UPLOADER_TMP_PATH}/${upload_name}" \
-		--form "compressed=${is_compressed}"
+		--form "compressed=${is_compressed}")
+
+	if [ "${UPLOAD_RESPONSE}" = "1" ]; then
+
+		if [ "${SHOW_NOTIFICATION}" = "true" ]; then
+			show_notification "ESO-Database Export AddOn data has been uploaded!"
+		fi
+
+		print_success "File uploaded successfully"
+	else
+
+		if [ "${SHOW_NOTIFICATION}" = "true" ]; then
+			show_notification "ESO-Database Export AddOn data upload ERROR!"
+		fi
+
+		print_status "The upload could not be performed due to a server-side error"
+	fi
 
 	rm -f "${ESODB_UPLOADER_TMP_PATH}/${SV_FILE_NAME}"
   rm -f "${ESODB_UPLOADER_TMP_PATH}/${SV_FILE_NAME}.tar"

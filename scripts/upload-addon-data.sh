@@ -15,8 +15,7 @@ while getopts 'd' flag; do
 done
 
 if [ -f "${ESODB_ESO_PROTON_EXPORT_ADDON_SV_FILE}" ]; then
-	upload_sv_file "${ESODB_UPLOAD_EXPORT_URL}" "${ESODB_ESO_PROTON_EXPORT_ADDON_SV_FILE}" "${ESODB_SV_EXPORT_FILE_NAME}" "true"
-	show_notification "ESO-Database Export AddOn data has been uploaded!"
+	upload_sv_file "${ESODB_UPLOAD_EXPORT_URL}" "${ESODB_ESO_PROTON_EXPORT_ADDON_SV_FILE}" "${ESODB_SV_EXPORT_FILE_NAME}" "true" "true"
 fi
 
 if [ ${ESODB_ADDON_GAME_DATA_EXPORT_ENABLED} -eq 1 ]; then
