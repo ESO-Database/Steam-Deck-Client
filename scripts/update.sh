@@ -70,11 +70,14 @@ if [ ! "${LOCAL_VERSION}" = "${REMOTE_VERSION}" ]; then
 
   print_status "Updating background services"
   cp -f "${ESODB_APPLICATION_PATH}/install/systemd/eso-database-uploader.service" /home/deck/.config/systemd/user/eso-database-uploader.service
+  cp -f "${ESODB_APPLICATION_PATH}/install/systemd/eso-database-updater.service" /home/deck/.config/systemd/user/eso-database-updater.service
+	cp -f "${ESODB_APPLICATION_PATH}/install/systemd/eso-database-updater.timer" /home/deck/.config/systemd/user/eso-database-updater.timer
   cp -f "${ESODB_APPLICATION_PATH}/install/systemd/eso-database-addon-updater.service" /home/deck/.config/systemd/user/eso-database-addon-updater.service
   cp -f "${ESODB_APPLICATION_PATH}/install/systemd/eso-database-addon-updater.timer" /home/deck/.config/systemd/user/eso-database-addon-updater.timer
 
   systemctl --user daemon-reload
   systemctl --user try-restart eso-database-uploader.service
+  systemctl --user try-restart eso-database-updater.timer
   systemctl --user try-restart eso-database-addon-updater.timer
 
 
