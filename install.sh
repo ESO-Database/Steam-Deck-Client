@@ -5,7 +5,7 @@ set -eo pipefail
 ESODB_GITHUB_URL="https://api.github.com/repos/ESO-Database/Steam-Deck-Client/releases/latest"
 ESODB_URL="$(curl --location --silent ${ESODB_GITHUB_URL} | grep -E 'browser_download_url.*zip' | cut -d '"' -f 4)"
 ESODB_DESKTOP_APPLICATION_PATH="/home/deck/.local/share/applications"
-
+ESODB_APPLICATION_PATH="/home/deck/Applications/ESO-Database"
 
 report_error() {
     FAILURE="$(caller): ${BASH_COMMAND}"
@@ -36,27 +36,27 @@ trap report_error ERR
 
 
 print_status "Creating required directories..."
-mkdir -p /home/deck/Applications/ESO-Database
+mkdir -p "${ESODB_APPLICATION_PATH}"
 mkdir -p /home/deck/.eso-database-client
 mkdir -p /home/deck/.eso-database-client/meta
 
 
 print_status "Downloading ESO-Database Steam Deck Client files..."
 echo "${ESODB_URL}"
-curl --progress-bar --location "${ESODB_URL}" -o /home/deck/Applications/ESO-Database/core.zip
+curl --progress-bar --location "${ESODB_URL}" -o "${ESODB_APPLICATION_PATH}/core.zip"
 
 print_status "Extracting files..."
-cd /home/deck/Applications/ESO-Database
-unzip -qq -o /home/deck/Applications/ESO-Database/core.zip
-rm -f /home/deck/Applications/ESO-Database/core.zip
+cd "${ESODB_APPLICATION_PATH}"
+unzip -qq -o "${ESODB_APPLICATION_PATH}/core.zip"
+rm -f "${ESODB_APPLICATION_PATH}/core.zip"
 
 print_status "Set script permissions..."
-chmod +x /home/deck/Applications/ESO-Database/scripts/*.sh
+chmod +x "${ESODB_APPLICATION_PATH}/scripts/"*.sh
 print_success "Done"
 
 
 print_status "Fetching Elder Scrolls Online AddOns meta data..."
-fetch_addons_result=$(/home/deck/Applications/ESO-Database/scripts/api/get-addons.sh)
+fetch_addons_result=$("${ESODB_APPLICATION_PATH}/scripts/api/get-addons.sh")
 if [ "${fetch_addons_result}" = "ok" ]; then
 	print_success "OK"
 else
@@ -65,40 +65,40 @@ fi
 
 
 print_status "Installing Elder Scrolls Online AddOns..."
-/home/deck/Applications/ESO-Database/scripts/update-addons.sh
+exec "${ESODB_APPLICATION_PATH}/scripts/update-addons.sh"
 print_success "Done"
 
 
 print_status "ESO-Database Account login"
-login_status=$(/home/deck/Applications/ESO-Database/scripts/api/get-auth-status.sh)
+login_status=$("${ESODB_APPLICATION_PATH}/scripts/api/get-auth-status.sh")
 if [ "${login_status}" = "false" ]; then
 	print_info "Please login in with your ESO-Database account..."
 	sleep 2
-	/home/deck/Applications/ESO-Database/scripts/login.sh
+	exec "${ESODB_APPLICATION_PATH}/scripts/login.sh"
 else
-	user_name=$(/home/deck/Applications/ESO-Database/scripts/tools/get-user-name.sh)
+	user_name=$("${ESODB_APPLICATION_PATH}/scripts/tools/get-user-name.sh")
 	print_info "Already signed in as \033[1;34m${user_name}\033[0m Skipping login step."
 fi
 
 
 print_status "Install background services"
-cp -f /home/deck/Applications/ESO-Database/install/systemd/eso-database-uploader.service /home/deck/.config/systemd/user/eso-database-uploader.service
-cp -f /home/deck/Applications/ESO-Database/install/systemd/eso-database-addon-updater.service /home/deck/.config/systemd/user/eso-database-addon-updater.service
-cp -f /home/deck/Applications/ESO-Database/install/systemd/eso-database-addon-updater.timer /home/deck/.config/systemd/user/eso-database-addon-updater.timer
+cp -f "${ESODB_APPLICATION_PATH}/install/systemd/eso-database-uploader.service" /home/deck/.config/systemd/user/eso-database-uploader.service
+cp -f "${ESODB_APPLICATION_PATH}/install/systemd/eso-database-addon-updater.service" /home/deck/.config/systemd/user/eso-database-addon-updater.service
+cp -f "${ESODB_APPLICATION_PATH}/install/systemd/eso-database-addon-updater.timer" /home/deck/.config/systemd/user/eso-database-addon-updater.timer
 
 
 print_status "Enable and start background services"
-/home/deck/Applications/ESO-Database/scripts/enable-autoupload.sh
-/home/deck/Applications/ESO-Database/scripts/enable-addon-autoupdate.sh
+exec "${ESODB_APPLICATION_PATH}/scripts/enable-autoupload.sh"
+exec "${ESODB_APPLICATION_PATH}/scripts/enable-addon-autoupdate.sh"
 
 
 print_status "Creating Launcher entries"
-cp -f /home/deck/Applications/ESO-Database/install/desktop/* "${ESODB_DESKTOP_APPLICATION_PATH}"
+cp -f "${ESODB_APPLICATION_PATH}/install/desktop/"* "${ESODB_DESKTOP_APPLICATION_PATH}"
 print_success "Done"
 
 
 print_status "Remove remaining setup files..."
-rm -fr /home/deck/Applications/ESO-Database/install
+rm -fr "${ESODB_APPLICATION_PATH}/install"
 print_success "Done"
 
 

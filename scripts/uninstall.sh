@@ -18,7 +18,9 @@ case $yn in
 		read -p "Do you want your personal settings to be deleted as well? (y/n) " yn
 		case $yn in
 			[yY] ) print_info "Removing personal settings..."
-				rm -fr /home/deck/.eso-database-client
+				if [ -d "${ESODB_APP_DATA_PATH}" ]; then
+					rm -fr "${ESODB_APP_DATA_PATH}"
+				fi
 				print_success "Done\n"
 		esac
 

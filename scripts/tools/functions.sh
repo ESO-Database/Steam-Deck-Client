@@ -3,6 +3,7 @@
 print_status () {
   printf "\033[1m$1\033[0m\n\n"
 }
+
 print_error () {
   printf "\n"
   printf "\033[1;31m-----------------------\033[0m\n"
@@ -10,10 +11,12 @@ print_error () {
 	printf "\033[1;31m-----------------------\033[0m\n"
 	printf "\033[0;31m$1\033[0m\n"
 }
+
 print_success () {
 	printf "\n"
 	printf "\033[1;32m$1\033[0m\n"
 }
+
 print_info_warning () {
 	printf "\033[0;33m$1\033[0m\n"
 }
@@ -27,8 +30,8 @@ get_auth_secure_token () {
 
 	auth_secure_token=""
 
-	if [ -f /home/deck/.eso-database-client/auth ]; then
-		auth_secure_token_json=$(cat /home/deck/.eso-database-client/auth | jq --raw-output '.token')
+	if [ -f "${ESODB_APP_DATA_PATH}/auth" ]; then
+		auth_secure_token_json=$(cat "${ESODB_APP_DATA_PATH}/auth" | jq --raw-output '.token')
 		if [ ! -z "${auth_secure_token_json}" ]; then
 			auth_secure_token="${auth_secure_token_json}"
 		fi
@@ -69,3 +72,4 @@ get_addon_integer_version () {
 
 	echo "${version}"
 }
+
