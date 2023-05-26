@@ -60,11 +60,11 @@ if [ "${fetch_addons_result}" = "ok" ]; then
 			fi
 
 			if [ ${addon_version_integer} -eq 0 ]; then
-				echo "Installing AddOn ${addon_name} version ${version_string}..."
+				echo -e "[\033[1;35m${folder_name}\033[0m] Installing version ${version_string}..."
 			elif [ ! ${addon_version_integer} -eq ${version_integer} ]; then
-				echo "Updating AddOn ${addon_name} from ${addon_version_string} to version ${version_string}..."
+				echo -e "[\033[1;35m${folder_name}\033[0m] Updating from version ${addon_version_string} to version ${version_string}..."
 			else
-				echo "AddOn ${addon_name} is up to date! (Version ${addon_version_string})"
+				echo -e "[\033[1;35m${folder_name}\033[0m] AddOn is up to date! (Version ${addon_version_string})"
 				continue
 			fi
 
