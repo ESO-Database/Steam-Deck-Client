@@ -10,7 +10,7 @@ With the ESO-Database Steam Deck Client you update the needed The Elder Scrolls 
 Right-click on the following link and select "Save Link As" and save the file to your Steam deck in desktop mode.  
 <a href="https://raw.githubusercontent.com/ESO-Database/Steam-Deck-Client/master/ESO-Database.desktop">👉 Save this link to your Steam Deck in Desktop Mode!</a>  
 
-After that, simply open the shortcut to start the installation of ESO Database Steam Deck Integration.
+After that, simply open the shortcut to start the installation of ESO-Database Steam Deck Integration.
 
 ## Advanced usage
 The ESO-Database Steam Deck Integrations comes with some scripts to manage the installation. There are also some shortcuts available in the launcher, search for "ESO-Database" to find them.  
@@ -38,3 +38,14 @@ The following scripts can be used to manage the ESO-Database integration.
 | update-addons.sh             | Fetches all available ESO-Database AddOns and downloads the latest version of each AddOn.                                                                                                    |
 | upload-addon-data.sh         | If you have disabled the auto upload service or want to upload your data manually, you can run this script to upload the exported data.                                                      |
 
+
+## How does it work?
+The codebase of the ESO-Database SteamDeck client is completely written in Bash. It uses the Systemd management service on user level to execute the add-on updates, uploads as well as client updates in the background even in gaming mode.
+
+Since there is no GUI, the integration is almost not noticeable in the game performance or battery life.
+
+The Systemd-Uploader services watch the file change times of the SavedVariable files. When a file change is detected, the file upload is started.
+
+
+## How to report a problem?
+You can report problems or suggestions on the [Issues](https://github.com/ESO-Database/Steam-Deck-Client/issues) page. Alternatively, the [contact form](https://www.eso-database.com/en/contact/) on ESO-Database.com can be used.
