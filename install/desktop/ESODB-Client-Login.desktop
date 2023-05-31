@@ -1,6 +1,6 @@
 #!/usr/bin/env xdg-open
 [Desktop Entry]
-Name=ESO-Database Login
+Name=ESO-Database | Login
 Exec=/home/deck/Applications/ESO-Database/scripts/login.sh -d
 Icon=/home/deck/Applications/ESO-Database/assets/images/logo.png
 Terminal=true
