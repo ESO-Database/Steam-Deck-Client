@@ -10,7 +10,7 @@ print_info () {
 }
 
 print_banner "\n-----------------------------------------------------------------"
-print_banner " This script will uninstall the ESO-Database SteamDeck Client"
+print_banner " This script will uninstall the ESO-Database Steam Deck Client"
 print_banner "-----------------------------------------------------------------"
 
 read -p "$(echo -e "\033[1mDo you really want to uninstall the ESO-Database Client? (y/n)\033[0m") " yn
@@ -73,7 +73,7 @@ case $yn in
 
 
 		print_banner "\n-------------------------------------------------------------------------------------------"
-    print_banner " The uninstallation of the ESO-Database SteamDeck client has been successfully completed!"
+    print_banner " The uninstallation of the ESO-Database Steam Deck client has been successfully completed!"
     print_banner "-------------------------------------------------------------------------------------------"
 
 		exit;;

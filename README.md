@@ -4,7 +4,7 @@
 [![Discord](https://img.shields.io/discord/683990734831091723?logo=discord)](https://discord.gg/WTv3a8bHEB)
 <img src="https://static.eso-database.com/github/steam-deck/steam-deck-eso.png?1">
 
-With the ESO-Database Steam Deck Client you update the needed The Elder Scrolls Online AddOns and automatically upload the AddOn data after your game sessions with a background service.
+With ESO-Database Steam Deck Client you update the required The Elder Scrolls Online AddOns. The AddOn data will be transferred automatically after the game session.
 
 ## Installation
 Right-click on the following link and select "Save Link As" and save the file to your Steam deck in desktop mode.  
@@ -33,14 +33,14 @@ The following scripts can be used to manage the ESO-Database integration.
 | enable-addon-auto-update.sh  | Enables the auto AddOn update service that is running in the background.                                                                                                                     |
 | login.sh                     | Opens the ESO-Database.com authentication website to log in with your ESO-Database user account. The credentials are stored, you don't need this script every time you start the Steam Deck. |
 | logout.sh                    | Deletes the stored credentials if you have logged in with an ESO-Database user account before.                                                                                               |
-| uninstall.sh                 | This will completely uninstall the ESO-Database Client from your SteamDeck.                                                                                                                  |
+| uninstall.sh                 | This will completely uninstall the ESO-Database Client from your Steam Deck.                                                                                                                 |
 | update.sh                    | Checks for a new release of the ESO-Database Steam Deck integration. If an update is available, the update is executed.                                                                      |
 | update-addons.sh             | Fetches all available ESO-Database AddOns and downloads the latest version of each AddOn.                                                                                                    |
 | upload-addon-data.sh         | If you have disabled the auto upload service or want to upload your data manually, you can run this script to upload the exported data.                                                      |
 
 
 ## How does it work?
-The codebase of the ESO-Database SteamDeck client is completely written in Bash. It uses the Systemd management service on user level to execute the add-on updates, uploads as well as client updates in the background even in gaming mode.
+The codebase of the ESO-Database Steam Deck client is completely written in Bash. It uses the Systemd management service on user level to execute the add-on updates, uploads as well as client updates in the background even in gaming mode.
 
 Since there is no GUI, the integration is almost not noticeable in the game performance or battery life.
 

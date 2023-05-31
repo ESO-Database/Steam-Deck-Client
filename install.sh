@@ -39,7 +39,7 @@ trap report_error ERR
 
 
 print_banner "\n-------------------------------------------------------------"
-print_banner " This script will install the ESO-Database SteamDeck Client"
+print_banner " This script will install the ESO-Database Steam Deck Client"
 print_banner "-------------------------------------------------------------"
 
 
@@ -118,7 +118,7 @@ fi
 
 
 print_banner "\n-------------------------------------------------------------------------------------------"
-print_banner " The installation of the ESO-Database SteamDeck client has been completed successfully."
+print_banner " The installation of the ESO-Database Steam Deck client has been completed successfully."
 print_banner " You can now start The Elder Scrolls Online, following a game session your data\n will be transferred automatically in the background."
 print_banner "-------------------------------------------------------------------------------------------"
 

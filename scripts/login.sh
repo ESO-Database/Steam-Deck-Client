@@ -18,7 +18,7 @@ print_status "Requesting login token..."
 
 auth_req=$(curl --silent "${ESODB_AUTH_API_URL}" \
 --header 'Content-Type: application/x-www-form-urlencoded' \
---data-urlencode 'source=steamdeck')
+--data-urlencode 'source=steam-deck')
 
 auth_req_status=$(echo "${auth_req}" | jq --raw-output '.status')
 if [ "${auth_req_status}" = "true" ]; then
@@ -46,7 +46,7 @@ if [ "${auth_req_status}" = "true" ]; then
       	auth_status_req=$(curl --silent "${ESODB_AUTH_API_GET_AUTH_REQUEST_STATUS}" \
           --header "X-Request-Token: ${auth_req_token}" \
           --header 'Content-Type: application/x-www-form-urlencoded' \
-          --data-urlencode 'source=steamdeck')
+          --data-urlencode 'source=steam-deck')
 
 				req_status=$(echo "${auth_status_req}" | jq --raw-output '.status')
 				req_auth_status=$(echo "${auth_status_req}" | jq --raw-output '.auth_status')
