@@ -7,4 +7,4 @@ systemctl --user daemon-reload
 systemctl --user stop eso-database-uploader.service
 systemctl --user disable eso-database-uploader.service
 
-print_success "The ESO database upload service has been disabled and stopped"
+print_success "The ESO-Database upload service has been disabled and stopped"

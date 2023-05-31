@@ -73,7 +73,7 @@ case $yn in
 
 
 		print_banner "\n-------------------------------------------------------------------------------------------"
-    print_banner " The uninstallation of the ESO Database SteamDeck client has been successfully completed!"
+    print_banner " The uninstallation of the ESO-Database SteamDeck client has been successfully completed!"
     print_banner "-------------------------------------------------------------------------------------------"
 
 		exit;;

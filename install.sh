@@ -118,7 +118,7 @@ fi
 
 
 print_banner "\n-------------------------------------------------------------------------------------------"
-print_banner " The installation of the ESO Database SteamDeck client has been completed successfully."
+print_banner " The installation of the ESO-Database SteamDeck client has been completed successfully."
 print_banner " You can now start The Elder Scrolls Online, following a game session your data\n will be transferred automatically in the background."
 print_banner "-------------------------------------------------------------------------------------------"
 
