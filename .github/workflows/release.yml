@@ -15,10 +15,7 @@ jobs:
         run: zip -r eso-database-steam-deck.zip assets/ config/ install/ scripts/ version.txt
 
       - name: Get release changelog
-        run: |
-          full_changelog=$(cat CHANGELOG.md)
-          changelog=$(php -r "preg_match_all('/((?:# ${{ github.ref_name }}\R)((-(.*)\R+)+))/m', '${full_changelog}', \$matches); echo trim(\$matches[2][0]);")
-          echo "${changelog}" > changelog.txt
+        run: $(php -r "preg_match_all('/((?:# ${{ github.ref_name }}\R)((-(.*)\R+)+))/m', file_get_contents('./CHANGELOG.md'), \$matches); echo trim(\$matches[2][0]);" > changelog.txt)
 
       - name: Read changelog from file
         id: changelog
