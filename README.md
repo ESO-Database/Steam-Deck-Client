@@ -40,7 +40,7 @@ The following scripts can be used to manage the ESO-Database integration.
 
 
 ## How does it work?
-The codebase of the ESO-Database Steam Deck client is completely written in Bash. It uses the Systemd management service on user level to execute the add-on updates, uploads as well as client updates in the background even in gaming mode.
+The codebase of the ESO-Database Steam Deck client is completely written with Shell scripts. It uses the Systemd management service on user level to execute the add-on updates, uploads as well as client updates in the background even in gaming mode.
 
 Since there is no GUI, the integration is almost not noticeable in the game performance or battery life.
 
