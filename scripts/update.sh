@@ -84,6 +84,7 @@ if [ ! "${LOCAL_VERSION}" = "${REMOTE_VERSION}" ]; then
 	print_status "Updating Launcher entries"
 	rm -f $(ls -d ${ESODB_DESKTOP_APPLICATION_PATH}/ESODB-Client-*)
   cp -f "${ESODB_APPLICATION_PATH}/install/desktop/"* "${ESODB_DESKTOP_APPLICATION_PATH}"
+  chmod 755 "${ESODB_DESKTOP_APPLICATION_PATH}/ESODB-Client-"*
   print_success "Done"
 
 

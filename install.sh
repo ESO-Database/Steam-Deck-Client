@@ -103,6 +103,7 @@ print_success "Done"
 
 print_status "Creating Launcher entries"
 cp -f "${ESODB_APPLICATION_PATH}/install/desktop/"* "${ESODB_DESKTOP_APPLICATION_PATH}"
+chmod 755 "${ESODB_DESKTOP_APPLICATION_PATH}/ESODB-Client-"*
 print_success "Done"
 
 
