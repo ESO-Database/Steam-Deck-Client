@@ -23,6 +23,11 @@ while getopts 'd' flag; do
 done
 
 
+if [ "${REMOTE_VERSION}" == "" ]; then
+  print_error "The remote version cannot be determined, is no internet connection available?"
+  exit 1
+fi
+
 if [ ! "${LOCAL_VERSION}" = "${REMOTE_VERSION}" ]; then
 
 	print_status "Downloading new version ${REMOTE_VERSION}"
@@ -37,6 +42,12 @@ if [ ! "${LOCAL_VERSION}" = "${REMOTE_VERSION}" ]; then
 	print_status "Downloading ESO-Database Steam Deck Client files..."
   echo "${DOWNLOAD_URL}"
   curl --progress-bar --location "${DOWNLOAD_URL}" -o "${UPDATE_TEMP_DIR}/core.zip"
+
+  if [ ! -f "${UPDATE_TEMP_DIR}/core.zip" ]; then
+		print_error "The update could not be downloaded."
+		exit 1
+	fi
+
   print_success "Done"
 
   print_status "Extracting files..."
