@@ -3,6 +3,7 @@ Description=The ESO-Database updater.
 After=network.target
 
 [Timer]
+OnBootSec=1min
 OnCalendar=*:0/30
 Unit=eso-database-updater.service
 
